@@ -1,0 +1,14 @@
+.about{
+    background-image: url(../../../Images/about-bg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    margin-top: 50px;
+}
+.about-info{
+    background: #000;
+    opacity: 0.8;
+    padding-left: 0px;
+    padding-top:50px;
+    padding-bottom:50px;
+}

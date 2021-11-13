@@ -5,7 +5,7 @@ const MyOrder = (props) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleNoBtn = () => setShow(false);
-    const { name, carName, email, Address, date, carImg, _id } = props.myOrder;
+    const { carName, date, carImg, _id } = props.myOrder;
     const handleDeleteOrder = id => {
         const url = `https://thawing-dusk-24452.herokuapp.com/orders/${id}`;
 

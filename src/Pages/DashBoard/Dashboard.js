@@ -12,12 +12,15 @@ import {
 import useAuth from '../../Hooks/useAuth';
 import AdminRoute from '../Login/AdminRoute/AdminRoute';
 import AddNewProduct from './AddNewProduct/AddNewProduct';
+import DashboardHome from './DashboardHome/DashboardHome';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders/ManageAllOrders';
 import ManageProducts from './ManageAllProducts/ManagaProducts/ManageProducts';
 import MyOrders from './MyOrders/MyOrders/MyOrders';
 import Payment from './Payment/Payment';
 import Reviews from './Reviews/Reviews/Reviews';
+import "./Dashboard.css"
+
 
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
@@ -25,21 +28,23 @@ const Dashboard = () => {
     return (
         <Row className="me-0 px-0">
             <Col md={3} className="px-0" >
-                <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
-                    <Container className="d-flex flex-column">
+                <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" >
+                    <Container className="d-flex flex-column dashboard-route">
+
                         <Navbar.Brand className="text-white me-auto fs-2 fw-bold" href="/home">Car Venture</Navbar.Brand>
                         <hr className="w-100 bg-white" />
-
 
                         <Navbar.Text className="text-white my-1 fs-4 text-start me-auto">
                             <FontAwesomeIcon className="text-white" icon={faColumns} />    Dashboard
                         </Navbar.Text>
+
                         <Navbar.Toggle className="me-auto text-start" aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse className="me-auto text-start" id="responsive-navbar-nav">
                             <Nav className="d-flex flex-column fs-6">
                                 {!admin && <>  <Nav.Link as={Link} to={`${url}/myorders`}><FontAwesomeIcon icon={faShoppingCart} /> My Orders</Nav.Link> <br />
 
                                     <Nav.Link as={Link} to={`${url}/reviews`}> <FontAwesomeIcon icon={faComment} /> Review</Nav.Link><br />
+
                                     <Nav.Link as={Link} to={`${url}/payment`}><FontAwesomeIcon icon={faFileInvoice} /> Payment</Nav.Link><br /></>}
                                 {admin && <div>
                                     <Nav.Link as={Link} to={`${url}/manageallorders`}> <FontAwesomeIcon icon={faShoppingBasket} /> Manage All Orders</Nav.Link><br />
@@ -64,7 +69,7 @@ const Dashboard = () => {
                 <hr />
                 <Switch>
                     <Route exact path={path}>
-                        <h1>Hello! <span className="text-success">{user.displayName}</span> <br /> Welcome to Car Venture.</h1>
+                        <DashboardHome></DashboardHome>
                     </Route>
                     <Route path={`${path}/myorders`}>
                         <MyOrders></MyOrders>

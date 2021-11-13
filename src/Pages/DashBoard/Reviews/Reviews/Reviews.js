@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
 import useAuth from '../../../../Hooks/useAuth.js'
 
 const Reviews = () => {
@@ -33,15 +32,6 @@ const Reviews = () => {
 
                         <textarea className="m-2 w-50 px-4 py-2" placeholder="Write your review"{...register("reviewDesc", { required: true })} />
                         <br />
-
-                        {/* <input
-                            type="number"
-                            placeholder="Rating(1-5)"
-                            className="m-2 w-50 px-4 py-2"
-                            {...register('Rating', {
-                                max: { value: 5 }
-                            })}
-                        /> */}
                         <select {...register("Rating")} className='w-50'>
                             <option value="1">★</option>
                             <option value="2">★★</option>

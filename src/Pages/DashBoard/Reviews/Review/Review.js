@@ -4,7 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./Review.css"
-import { Card, Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import './Review.css'
 const Review = () => {
     const [reviews, setReviews] = useState([]);
 
@@ -18,7 +19,7 @@ const Review = () => {
 
 
     var settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         autoplay: true,
@@ -27,30 +28,35 @@ const Review = () => {
     };
 
     return (
-        <Container className="my-5">
-            <div className="text-start">
-                <h4 >What People Says....</h4>
+        <Container className='review'>
+            <div className="my-5">
+                <div className="my-5">
+                    <p className="pt-5">What Our Happy Clients say about us</p>
+                    <h2>OUR TESTIMONIAL</h2>
+                </div>
+                <Slider {...settings}>
+                    {
+                        reviews.map(review => <div key={review._id} className="w-75  pb-4">
+
+                            <div className="text-start  text-white  bg-dark opacity-75 py-5">
+                                <p >{review.reviewDesc}</p>
+
+                                <ReactStars
+                                    count={review.Rating}
+                                    size={24}
+                                    color="#ffd700"
+                                />
+                                <h6>from: {review.address}</h6>
+                            </div>
+                            <div className=' text-white'>
+
+                                <h4>{review.name}</h4>
+                            </div>
+
+                        </div>)
+                    }
+                </Slider>
             </div>
-            <Slider {...settings} className="border bg-dark opacity-50">
-                {
-                    reviews.map(review => <div key={review._id} className="w-50 mx-auto row">
-                        <div className='col-md-6 text-white'>
-
-                            <h4>{review.name}</h4>
-                        </div>
-                        <div className="text-start  text-white col-md-6">
-                            <p >{review.reviewDesc}</p>
-                            <h6>from: {review.address}</h6>
-                            <ReactStars
-                                count={review.Rating}
-                                size={24}
-                                color="#ffd700"
-                            />
-                        </div>
-
-                    </div>)
-                }
-            </Slider>
         </Container>
     );
 };
