@@ -38,7 +38,7 @@ const Review = () => {
                     {
                         reviews.map(review => <div key={review._id} className="w-75  pb-4">
 
-                            <div className="text-start  text-white  bg-dark opacity-75 py-5 pe-0">
+                            <div className="text-start  text-white  bg-dark opacity-75 py-5 ps-3">
                                 <p >{review.reviewDesc}</p>
 
                                 <ReactStars
