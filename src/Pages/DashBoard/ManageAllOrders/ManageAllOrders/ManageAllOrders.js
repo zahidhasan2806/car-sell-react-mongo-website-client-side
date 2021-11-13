@@ -14,7 +14,7 @@ const ManageAllOrders = () => {
     return (
         <Container>
             <div className="text-start mt-5">
-                <h2>Manages All Orders</h2>
+                <h2 className="fw-bold">Manages All Orders</h2>
                 <hr />
             </div>
             <div className="table-responsive">

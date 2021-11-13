@@ -119,11 +119,9 @@ const UseFirebase = () => {
     };
 
     useEffect(() => {
-        setIsLoading(true)
         fetch(`https://thawing-dusk-24452.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
-        setIsLoading(false);
     }, [user.email])
 
 

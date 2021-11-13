@@ -1,9 +1,10 @@
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import { Button, Carousel } from 'react-bootstrap';
 import slider1 from "../../../Images/slider02.jpg"
 import slider2 from "../../../Images/slider03.jpg"
 import slider3 from "../../../Images/slider01.jpg"
 import './Banner.css'
+import { Link } from 'react-router-dom';
 
 
 
@@ -19,8 +20,11 @@ const Banner = () => {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3 className="my-5">First slide label</h3>
-                    <p className="pb-5 my-5 ">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h3 className="fs-1 fw-bold my-5">My Car, My Choice</h3>
+                    <p className="pb-5 fs-5 my-5 ">	Let's Enjoy Life On Full Speed Now</p>
+                    <Link to="/explore">
+                        <Button variant="dark">Explore Our Car</Button>
+                    </Link>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -32,21 +36,27 @@ const Banner = () => {
                 />
 
                 <Carousel.Caption>
-                    <h3 className="my-5">Second slide label</h3>
-                    <p className="pb-5 my-5 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3 className="fs-1 fw-bold my-5">Getting Your Car on the road</h3>
+                    <p className="pb-5 fs-5 my-5 ">	Operated Locally, Excelled Globally.</p>
+                    <Link to="/explore">
+                        <Button variant="dark">Explore Our Car</Button>
+                    </Link>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
                 <img
-                    className="im-fluid w-100"
+                    className="w-100"
                     src={slider3}
                     style={{ height: "100vh", opacity: 0.5 }}
                     alt="Third slide"
                 />
 
                 <Carousel.Caption>
-                    <h3 className="my-5">Third slide label</h3>
-                    <p className="pb-5 my-5 ">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <h3 className="fs-1 fw-bold my-5">We keep your life Running</h3>
+                    <p className="pb-5 fs-5 my-5 ">	Putting you on the road of reliability.</p>
+                    <Link to="/explore">
+                        <Button variant="dark">Explore Our Car</Button>
+                    </Link>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
