@@ -1,3 +1,5 @@
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
@@ -11,7 +13,7 @@ const ManageAllOrder = (props) => {
 
 
     const handleDeleteOrder = id => {
-        const url = `http://localhost:5000/orders/${id}`;
+        const url = `https://thawing-dusk-24452.herokuapp.com/orders/${id}`;
 
         fetch(url, {
             method: 'DELETE'
@@ -29,7 +31,7 @@ const ManageAllOrder = (props) => {
     const handleUpdateStatus = () => {
         const updatedStatus = { status: "shipped" };
 
-        const url = `http://localhost:5000/orders/${_id}`;
+        const url = `https://thawing-dusk-24452.herokuapp.com/orders/${_id}`;
 
         fetch(url, {
             method: 'PUT',
@@ -38,8 +40,8 @@ const ManageAllOrder = (props) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.modifiedCount > 0) {
+                    console.log(data);
                     alert('Order approved')
                     window.location.reload()
                 }
@@ -55,6 +57,7 @@ const ManageAllOrder = (props) => {
             <td>{Contact}</td>
             <td>{Address}</td>
             <td>
+                {status === "shipped" && <FontAwesomeIcon className="text-success" icon={faCheck} />}
                 {status}
             </td>
             <td>

@@ -15,14 +15,14 @@ const Purchase = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cars/${id}`)
+        fetch(`https://thawing-dusk-24452.herokuapp.com/cars/${id}`)
             .then(res => res.json())
             .then(data => setcars(data))
     }, [])
 
     const onSubmit = data => {
 
-        axios.post('http://localhost:5000/orders', data)
+        axios.post('https://thawing-dusk-24452.herokuapp.com/orders', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert("Form submitted successfully");
@@ -30,13 +30,6 @@ const Purchase = () => {
                 }
             })
     };
-    function getDate() {
-        var today = new Date();
-
-        document.getElementById("date").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
-
-
-    }
     return (
         <>
             <Navigation></Navigation>
@@ -64,12 +57,13 @@ const Purchase = () => {
                     </Col>
 
                     <Col md={6} sm={12} className='text-center'>
-                        <h3>Add a Booking</h3>
+                        <h3>Fill-up the Form</h3>
                         <hr />
                         <form className="pt-3 pb-5 border" onSubmit={handleSubmit(onSubmit)}>
 
                             <input className="m-3  px-4 py-2" defaultValue={user.displayName} {...register("name")} />
                             {cars.name && <input className=" m-3  px-4 py-2" defaultValue={cars.name} {...register("carName", { required: true })} readOnly />}
+                            {cars.img && <input className=" m-3  px-4 py-2" defaultValue={cars.img} {...register("carImg", { required: true })} readOnly />}
                             <input className=" m-3  px-4 py-2" defaultValue={user.email} {...register("email", { required: true })} />
                             {errors.email && <span className="text-danger">Please Enter Your Email</span>}
 
@@ -80,7 +74,7 @@ const Purchase = () => {
                             <input type="date" className="m-3  px-4 py-2"{...register("date", { required: true })} />
 
 
-                            <input className="m-3 w-50 px-4 py-2" defaultValue="pending" readOnly {...register("status")} />
+                            <input className="m-3  px-4 py-2" defaultValue="pending" readOnly {...register("status")} />
 
                             {/* submit button */}
                             < input className=" m-3 btn btn-info " type="submit" value="Book now" />

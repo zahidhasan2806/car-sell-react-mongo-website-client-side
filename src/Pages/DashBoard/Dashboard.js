@@ -1,15 +1,16 @@
-import { Button, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
-
-import 'react-pro-sidebar/dist/css/styles.css';
+import { faComment, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faColumns, faFileInvoice, faFolderPlus, faShoppingBasket, faShoppingCart, faSignOutAlt, faTasks, faUserShield } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Breadcrumb, Button, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link,
-    useParams,
-    useRouteMatch
+    useRouteMatch,
+
 } from "react-router-dom";
 import useAuth from '../../Hooks/useAuth';
+import AdminRoute from '../Login/AdminRoute/AdminRoute';
 import AddNewProduct from './AddNewProduct/AddNewProduct';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders/ManageAllOrders';
@@ -20,35 +21,50 @@ import Reviews from './Reviews/Reviews/Reviews';
 
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
-    const { logOut, user } = useAuth();
+    const { logOut, user, admin } = useAuth();
     return (
-        <Row>
-            <Col md={3} className>
-                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Row className="me-0 px-0">
+            <Col md={3} className="px-0" >
+                <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
                     <Container className="d-flex flex-column">
-                        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                        <Navbar.Collapse id="responsive-navbar-nav">
-                            <Nav className="d-flex flex-column">
-                                <Nav.Link as={Link} to={`${url}/myorders`}>My Orders</Nav.Link>
-                                <Nav.Link as={Link} to={`${url}/reviews`}>Review</Nav.Link>
-                                <Nav.Link as={Link} to={`${url}/payment`}>Payment</Nav.Link>
-                                <Nav.Link as={Link} to={`${url}/manageallorders`}>Manage All Orders</Nav.Link>
-                                <Nav.Link as={Link} to={`${url}/manageproducts`}>Manage Products</Nav.Link>
-                                <Nav.Link as={Link} to={`${url}/addnewproduct`}>Add A Product</Nav.Link>
-                                <Nav.Link as={Link} to={`${url}/makeadmin`}>Make Admin</Nav.Link>
-                                <Link to="/"><Button variant="dark" onClick={logOut}>Logout</Button></Link>
-                                <Link to="/"><Button variant="dark">Home Page</Button></Link>
-                            </Nav>
+                        <Navbar.Brand className="text-white me-auto fs-2 fw-bold" href="/home">Car Venture</Navbar.Brand>
+                        <hr className="w-100 bg-white" />
 
+
+                        <Navbar.Text className="text-white my-1 fs-4 text-start me-auto">
+                            <FontAwesomeIcon className="text-white" icon={faColumns} />    Dashboard
+                        </Navbar.Text>
+                        <Navbar.Toggle className="me-auto text-start" aria-controls="responsive-navbar-nav" />
+                        <Navbar.Collapse className="me-auto text-start" id="responsive-navbar-nav">
+                            <Nav className="d-flex flex-column fs-6">
+                                {!admin && <>  <Nav.Link as={Link} to={`${url}/myorders`}><FontAwesomeIcon icon={faShoppingCart} /> My Orders</Nav.Link> <br />
+
+                                    <Nav.Link as={Link} to={`${url}/reviews`}> <FontAwesomeIcon icon={faComment} /> Review</Nav.Link><br />
+                                    <Nav.Link as={Link} to={`${url}/payment`}><FontAwesomeIcon icon={faFileInvoice} /> Payment</Nav.Link><br /></>}
+                                {admin && <div>
+                                    <Nav.Link as={Link} to={`${url}/manageallorders`}> <FontAwesomeIcon icon={faShoppingBasket} /> Manage All Orders</Nav.Link><br />
+                                    <Nav.Link as={Link} to={`${url}/manageproducts`}> <FontAwesomeIcon icon={faTasks} /> Manage Products</Nav.Link><br />
+                                    <Nav.Link as={Link} to={`${url}/addnewproduct`}><FontAwesomeIcon icon={faFolderPlus} /> Add A Product</Nav.Link><br />
+                                    <Nav.Link as={Link} to={`${url}/makeadmin`}><FontAwesomeIcon icon={faUserShield} /> Make Admin</Nav.Link><br />
+                                </div>}
+                                <hr className="w-100 mx-auto text-white" />
+
+                                <h6 className="text-white ">{admin ? <FontAwesomeIcon icon={faUserShield} /> : <FontAwesomeIcon icon={faUser} />}   {user.displayName}</h6>
+                                <Link to="/"><Button variant="dark" onClick={logOut}><FontAwesomeIcon icon={faSignOutAlt} /> Logout</Button></Link>
+                            </Nav>
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
             </Col>
-            <Col md={9}>
+            <Col md={9} className="px-0">
+                <Breadcrumb className="my-4  ms-3">
+                    <Breadcrumb.Item href="/home" className="fs-4">Home</Breadcrumb.Item>
+                    <Breadcrumb.Item className="fs-4"> Dashboard</Breadcrumb.Item>
+                </Breadcrumb>
+                <hr />
                 <Switch>
                     <Route exact path={path}>
-                        <h1>Hello! <span className="text-success">{user.displayName}</span> Welcome to Car Venture.</h1>
+                        <h1>Hello! <span className="text-success">{user.displayName}</span> <br /> Welcome to Car Venture.</h1>
                     </Route>
                     <Route path={`${path}/myorders`}>
                         <MyOrders></MyOrders>
@@ -59,18 +75,18 @@ const Dashboard = () => {
                     <Route path={`${path}/payment`}>
                         <Payment></Payment>
                     </Route>
-                    <Route path={`${path}/manageallorders`}>
+                    <AdminRoute path={`${path}/manageallorders`}>
                         <ManageAllOrders></ManageAllOrders>
-                    </Route>
-                    <Route path={`${path}/manageproducts`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageproducts`}>
                         <ManageProducts></ManageProducts>
-                    </Route>
-                    <Route path={`${path}/addnewproduct`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/addnewproduct`}>
                         <AddNewProduct></AddNewProduct>
-                    </Route>
-                    <Route path={`${path}/makeadmin`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/makeadmin`}>
                         <MakeAdmin></MakeAdmin>
-                    </Route>
+                    </AdminRoute>
                 </Switch>
             </Col>
         </Row>

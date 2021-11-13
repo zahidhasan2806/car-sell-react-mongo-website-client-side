@@ -8,7 +8,7 @@ const ManageProduct = (props) => {
     const { name, price, Category, _id } = props.car;
 
     const handleDeleteOrder = id => {
-        const url = `http://localhost:5000/cars/${id}`;
+        const url = `https://thawing-dusk-24452.herokuapp.com/cars/${id}`;
 
         fetch(url, {
             method: 'DELETE'

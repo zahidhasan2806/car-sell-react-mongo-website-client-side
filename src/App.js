@@ -9,13 +9,7 @@ import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
 import PrivateRoute from './Pages/Login/PrivetRoute/PrivateRoute';
 import Register from './Pages/Login/Register/Register';
-import Payment from './Pages/DashBoard/Payment/Payment';
-import MyOrders from './Pages/DashBoard/MyOrders/MyOrders/MyOrders';
-import ManageAllOrders from './Pages/DashBoard/ManageAllOrders/ManageAllOrders/ManageAllOrders';
-import AddNewProduct from './Pages/DashBoard/AddNewProduct/AddNewProduct';
-import MakeAdmin from './Pages/DashBoard/MakeAdmin/MakeAdmin';
-import Reviews from './Pages/DashBoard/Reviews/Reviews/Reviews';
-import ManageProducts from './Pages/DashBoard/ManageAllProducts/ManagaProducts/ManageProducts';
+
 
 function App() {
   return (

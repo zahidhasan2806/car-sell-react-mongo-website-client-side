@@ -13,6 +13,8 @@ const UseFirebase = () => {
     const [name, SetName] = useState(" ");
     const [email, SetEmail] = useState(" ");
     const [password, SetPassword] = useState(" ");
+    const [admin, setAdmin] = useState(false);
+
     const getNewUserEmail = (event) => {
         SetEmail(event.target.value);
     };
@@ -63,7 +65,9 @@ const UseFirebase = () => {
     //sign in with google 
 
     const signInWithGoogle = () => {
+        setIsLoading(true);
         return signInWithPopup(auth, googleProvider)
+            .finally(() => setIsLoading(false))
 
     };
 
@@ -94,7 +98,7 @@ const UseFirebase = () => {
 
     const storeUserDb = (email, displayName) => {
         const user = { email, displayName };
-        fetch("http://localhost:5000/users", {
+        fetch("https://thawing-dusk-24452.herokuapp.com/users", {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -105,17 +109,26 @@ const UseFirebase = () => {
 
     const storeGoogleUserDb = (email, displayName) => {
         const user = { email, displayName };
-        fetch("http://localhost:5000/users", {
+        fetch("https://thawing-dusk-24452.herokuapp.com/users", {
             method: 'PUT',
             headers: {
                 "content-type": "application/json"
             },
             body: JSON.stringify(user)
         }).then()
-    }
+    };
+
+    useEffect(() => {
+        setIsLoading(true)
+        fetch(`https://thawing-dusk-24452.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+        setIsLoading(false);
+    }, [user.email])
+
 
     return {
-        user, name, email,
+        user, name, email, admin,
         setUser,
         setError,
         error,

@@ -6,13 +6,17 @@ const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/orders")
+        fetch("https://thawing-dusk-24452.herokuapp.com/orders")
             .then(res => res.json())
             .then(data => setOrders(data))
     }, []);
 
     return (
         <Container>
+            <div className="text-start mt-5">
+                <h2>Manages All Orders</h2>
+                <hr />
+            </div>
             <div className="table-responsive">
                 <Table striped bordered hover size="sm">
                     <thead>

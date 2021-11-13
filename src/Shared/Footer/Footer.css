@@ -1,0 +1,19 @@
+  .footer-menu {
+    list-style: none;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .footer-menu:hover {
+    color: red;
+  }
+  .footer-container {
+    background-color:#212529;
+    padding: 50px;
+    color: white;
+  }
+  .footer-phone-icon {
+    font-size: 20px;
+    color: white;
+    margin-right:5px ;
+  }

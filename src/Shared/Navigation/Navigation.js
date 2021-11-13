@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Nav, Navbar, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
-import logo from "../../Images/carLogo.png";
 
 const Navigation = () => {
     const { user, logOut } = useAuth();
@@ -12,7 +11,7 @@ const Navigation = () => {
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
             <Container>
                 <Navbar.Brand as={NavLink} to="/home">
-                    <h3>Good Car</h3>
+                    <h3>Car Venture</h3>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">

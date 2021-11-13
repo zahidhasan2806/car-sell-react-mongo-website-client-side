@@ -5,13 +5,17 @@ import ManageProduct from '../ManageProduct/ManageProduct';
 const ManageProducts = () => {
     const [cars, setCars] = useState([]);
     useEffect(() => {
-        const url = "http://localhost:5000/cars";
+        const url = "https://thawing-dusk-24452.herokuapp.com/cars";
         fetch(url)
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
     return (
         <Container>
+            <div>
+                <h3 className="text-start fw-bold fs-2">All Products List</h3>
+                <hr />
+            </div>
             <div className="table-responsive">
                 <Table striped bordered hover size="sm">
                     <thead>

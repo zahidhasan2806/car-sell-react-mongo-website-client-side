@@ -17,7 +17,7 @@ const Register = () => {
     const history = useHistory();
 
     const location = useLocation();
-    const redirect = location?.state?.from || "/home";
+    const redirect = location?.state?.from || "/dashboard";
 
 
     const handlCreateUser = (e) => {
@@ -72,7 +72,7 @@ const Register = () => {
                         aria-describedby="basic-addon1"
                     />
                 </InputGroup>
-                <Button onClick={handlCreateUser} className="w-100" variant="outline-dark">Sign Up </Button>
+                <Button onClick={handlCreateUser} className="w-100" variant="outline-dark">Register </Button>
                 <div className="text-danger">
                     <p className="text-danger">{error}</p>
                 </div>

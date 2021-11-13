@@ -5,23 +5,25 @@ import useAuth from '../../../Hooks/useAuth';
 
 const PrivateRoute = ({ children, ...rest }) => {
     const { user, isLoading } = useAuth();
-    if (isLoading) { return <Spinner animation="border" /> }
+    if (!user.email || isLoading) {
+        return <Spinner animation="border" />
+    }
     return (
         <Route
             {...rest}
-            render={({ location }) =>
-                user.email ? (
-                    children
-                ) : (
-                    <Redirect
-                        to={{
-                            pathname: "/login",
-                            state: { from: location }
-                        }}
-                    />
-                )
+            render={({ location }) => user.email ? children :
+                <Redirect to={
+                    {
+                        pathname: "/login",
+                        state: { from: location }
+                    }
+                }
+
+                ></Redirect>
             }
-        />
+        >
+
+        </Route>
     );
 };
 
