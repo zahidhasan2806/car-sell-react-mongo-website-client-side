@@ -23,7 +23,7 @@ const Review = () => {
         infinite: true,
         speed: 500,
         autoplay: true,
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1
     };
 
@@ -34,11 +34,11 @@ const Review = () => {
                     <p className="pt-5">What Our Happy Clients say about us</p>
                     <h2>OUR TESTIMONIAL</h2>
                 </div>
-                <Slider {...settings}>
+                <Slider {...settings} className="p-0">
                     {
                         reviews.map(review => <div key={review._id} className="w-75  pb-4">
 
-                            <div className="text-start  text-white  bg-dark opacity-75 py-5">
+                            <div className="text-start  text-white  bg-dark opacity-75 py-5 pe-0">
                                 <p >{review.reviewDesc}</p>
 
                                 <ReactStars
