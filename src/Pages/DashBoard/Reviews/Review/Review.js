@@ -34,7 +34,7 @@ const Review = () => {
                     <p className="pt-5">What Our Happy Clients say about us</p>
                     <h2>OUR TESTIMONIAL</h2>
                 </div>
-                <Slider {...settings} className="p-0">
+                <Slider {...settings} className="container">
                     {
                         reviews.map(review => <div key={review._id} className="w-75  pb-4">
 

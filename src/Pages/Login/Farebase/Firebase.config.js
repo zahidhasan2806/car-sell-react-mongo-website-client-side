@@ -8,12 +8,7 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_FIREBASE_APP_ID,
 
 
-    // apiKey: "AIzaSyAPtqw4wb_3IPxQwLeWzayALAqq_KqZmSc",
-    // authDomain: "car-venture.firebaseapp.com",
-    // projectId: "car-venture",
-    // storageBucket: "car-venture.appspot.com",
-    // messagingSenderId: "1094749601081",
-    // appId: "1:1094749601081:web:d3c960b245bc0ee068fce8"
+
 };
 
 

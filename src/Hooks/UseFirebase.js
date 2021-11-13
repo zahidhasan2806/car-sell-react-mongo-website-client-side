@@ -95,7 +95,7 @@ const UseFirebase = () => {
     }, [])
 
 
-
+    //store new user in DB
     const storeUserDb = (email, displayName) => {
         const user = { email, displayName };
         fetch("https://thawing-dusk-24452.herokuapp.com/users", {
@@ -107,6 +107,7 @@ const UseFirebase = () => {
         }).then()
     }
 
+    //store google user in Db
     const storeGoogleUserDb = (email, displayName) => {
         const user = { email, displayName };
         fetch("https://thawing-dusk-24452.herokuapp.com/users", {
@@ -118,6 +119,7 @@ const UseFirebase = () => {
         }).then()
     };
 
+    //query for role admin for a user
     useEffect(() => {
         fetch(`https://thawing-dusk-24452.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
