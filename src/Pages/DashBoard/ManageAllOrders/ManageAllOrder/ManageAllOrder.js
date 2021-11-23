@@ -9,7 +9,7 @@ const ManageAllOrder = (props) => {
     const handleClose = () => setShow(false);
     const handleNoBtn = () => setShow(false);
 
-    const { carName, name, email, status, _id, Address, Contact } = props.order;
+    const { carName, name, email, status, _id, Address, Contact, payment } = props.order;
 
 
     const handleDeleteOrder = id => {

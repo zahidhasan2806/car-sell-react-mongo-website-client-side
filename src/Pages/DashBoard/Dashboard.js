@@ -77,7 +77,7 @@ const Dashboard = () => {
                     <Route path={`${path}/reviews`}>
                         <Reviews></Reviews>
                     </Route>
-                    <Route path={`${path}/payment`}>
+                    <Route path={`${path}/payment/:orderId`}>
                         <Payment></Payment>
                     </Route>
                     <AdminRoute path={`${path}/manageallorders`}>

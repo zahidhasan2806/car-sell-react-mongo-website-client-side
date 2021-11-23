@@ -63,6 +63,7 @@ const Purchase = () => {
 
                             <input className="m-3  px-4 py-2" defaultValue={user.displayName} {...register("name")} />
                             {cars.name && <input className=" m-3  px-4 py-2" defaultValue={cars.name} {...register("carName", { required: true })} readOnly />}
+                            {cars.price && <input className=" m-3  px-4 py-2" defaultValue={cars.price} {...register("carPrice", { required: true })} readOnly />}
                             {cars.img && <input className=" m-3  px-4 py-2" defaultValue={cars.img} {...register("carImg", { required: true })} readOnly />}
                             <input className=" m-3  px-4 py-2" defaultValue={user.email} {...register("email", { required: true })} />
                             {errors.email && <span className="text-danger">Please Enter Your Email</span>}
