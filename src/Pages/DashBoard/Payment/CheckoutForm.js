@@ -17,7 +17,7 @@ const CheckoutForm = ({ order }) => {
     const [process, setProcess] = useState(false)
     const [success, setSuccess] = useState('')
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://thawing-dusk-24452.herokuapp.com/create-payment-intent', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ carPrice }),
@@ -84,7 +84,7 @@ const CheckoutForm = ({ order }) => {
             }
 
 
-            const url = `http://localhost:5000/orders/${_id}`
+            const url = `https://thawing-dusk-24452.herokuapp.com/orders/${_id}`
             fetch(url, {
                 method: 'PUT',
                 headers: {

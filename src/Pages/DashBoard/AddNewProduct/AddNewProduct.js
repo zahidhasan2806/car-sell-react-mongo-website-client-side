@@ -15,7 +15,7 @@ const AddNewProduct = () => {
         formData.append('image', image)
 
 
-        fetch('http://localhost:5000/cars', {
+        fetch('https://thawing-dusk-24452.herokuapp.com/cars', {
             method: 'POST',
             body: formData
         })
