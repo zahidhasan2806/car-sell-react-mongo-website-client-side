@@ -18,6 +18,7 @@ const Navigation = () => {
                     <Nav className="ms-auto">
                         <Nav.Link as={NavLink} to="/home">Home</Nav.Link>
                         <Nav.Link as={NavLink} to="/explore">Explore Cars</Nav.Link>
+                        <Nav.Link as={NavLink} to="/contact">Contact Us</Nav.Link>
                         {
                             !user?.email ?
                                 <Nav.Link as={NavLink} to="/login">Login</Nav.Link> :

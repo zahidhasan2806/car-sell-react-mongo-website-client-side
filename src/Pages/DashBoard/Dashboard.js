@@ -1,5 +1,5 @@
 import { faComment, faUser } from '@fortawesome/free-regular-svg-icons';
-import { faColumns, faFileInvoice, faFolderPlus, faShoppingBasket, faShoppingCart, faSignOutAlt, faTasks, faUserShield } from '@fortawesome/free-solid-svg-icons';
+import { faColumns, faFolderPlus, faShoppingBasket, faShoppingCart, faSignOutAlt, faTasks, faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Breadcrumb, Button, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import {
@@ -44,8 +44,7 @@ const Dashboard = () => {
                                 {!admin && <>  <Nav.Link as={Link} to={`${url}/myorders`}><FontAwesomeIcon icon={faShoppingCart} /> My Orders</Nav.Link> <br />
 
                                     <Nav.Link as={Link} to={`${url}/reviews`}> <FontAwesomeIcon icon={faComment} /> Review</Nav.Link><br />
-
-                                    <Nav.Link as={Link} to={`${url}/payment`}><FontAwesomeIcon icon={faFileInvoice} /> Payment</Nav.Link><br /></>}
+                                </>}
                                 {admin && <div>
                                     <Nav.Link as={Link} to={`${url}/manageallorders`}> <FontAwesomeIcon icon={faShoppingBasket} /> Manage All Orders</Nav.Link><br />
                                     <Nav.Link as={Link} to={`${url}/manageproducts`}> <FontAwesomeIcon icon={faTasks} /> Manage Products</Nav.Link><br />

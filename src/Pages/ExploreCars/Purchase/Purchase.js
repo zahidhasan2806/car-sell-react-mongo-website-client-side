@@ -7,6 +7,7 @@ import axios from 'axios';
 
 
 import Navigation from '../../../Shared/Navigation/Navigation.js';
+import Swal from 'sweetalert2';
 
 const Purchase = () => {
     const { id } = useParams()
@@ -25,7 +26,7 @@ const Purchase = () => {
         axios.post('https://thawing-dusk-24452.herokuapp.com/orders', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert("Form submitted successfully");
+                    Swal.fire("Form submitted successfully");
                     reset();
                 }
             })
@@ -38,7 +39,7 @@ const Purchase = () => {
                     <Col md={6} sm={12} >
                         <Row>
                             <Col md={5}>
-                                <img src={cars.img} alt="" className="img-fluid" />
+                                <img src={`data:image/png;base64,${cars.image}`} alt="" className="img-fluid" />
                             </Col>
                             <Col md={7}>
                                 <Card style={{ width: '18rem' }} className="border-0 text-start">

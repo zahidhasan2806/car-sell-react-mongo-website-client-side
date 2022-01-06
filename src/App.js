@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './Context/AuthProvider';
+import Contact from './Pages/Contact.js/Contact';
 import Dashboard from './Pages/DashBoard/Dashboard';
 import ExploreCars from './Pages/ExploreCars/ExploreCars/ExploreCars';
 import Purchase from './Pages/ExploreCars/Purchase/Purchase';
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route path="/register">
               <Register></Register>
+            </Route>
+            <Route path="/contact">
+              <Contact></Contact>
             </Route>
             <Route path="/dashboard">
               <Dashboard></Dashboard>

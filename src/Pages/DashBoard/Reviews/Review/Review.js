@@ -18,13 +18,22 @@ const Review = () => {
 
 
 
-    var settings = {
-        dots: false,
+    let settings = {
+        dots: true,
         infinite: true,
         speed: 500,
-        autoplay: true,
         slidesToShow: 2,
-        slidesToScroll: 1
+        slidesToScroll: 2,
+        autoplay: true,
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     };
 
     return (
@@ -36,7 +45,7 @@ const Review = () => {
                 </div>
                 <Slider {...settings} className="container">
                     {
-                        reviews.map(review => <div key={review._id} className="w-75  pb-4">
+                        reviews.map(review => <div className="w-75  pb-4">
 
                             <div className="text-start  text-white  bg-dark opacity-75 py-5 ps-3">
                                 <p >{review.reviewDesc}</p>
